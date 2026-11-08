@@ -1,3 +1,4 @@
+mod extras;
 mod generator;
 mod seedable;
 
