@@ -39,3 +39,26 @@ impl SeedableGenerator for Xoshiro256StarStar {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::test::check_u64;
+
+    const TEST_VECTOR_SEED: [u64; 4] = [1, 2, 3, 4];
+    const TEST_VECTOR: &[u64] = &[
+        11520,
+        0,
+        1509978240,
+        1215971899390074240,
+        1216172134540287360,
+    ];
+
+    #[test]
+    fn test_vector() {
+        check_u64::<Xoshiro256StarStar>(
+            Xoshiro256Seed::new(TEST_VECTOR_SEED).unwrap(),
+            TEST_VECTOR,
+        );
+    }
+}

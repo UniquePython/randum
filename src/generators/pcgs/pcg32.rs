@@ -49,3 +49,20 @@ impl SeedableGenerator for Pcg32 {
         this
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::test::check_u32;
+
+    const TEST_VECTOR_SEED: PcgSeed<u64> = PcgSeed {
+        state: 42,
+        stream: 54,
+    };
+    const TEST_VECTOR: &[u32] = &[2707161783, 2068313097, 3122475824, 2211639955, 3215226955];
+
+    #[test]
+    fn test_vector() {
+        check_u32::<Pcg32>(TEST_VECTOR_SEED, TEST_VECTOR);
+    }
+}

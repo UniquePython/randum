@@ -32,3 +32,23 @@ impl SeedableGenerator for XorShift64 {
         Self { state: seed.get() }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::test::check_u64;
+
+    const TEST_VECTOR_SEED: NonZeroU64 = NonZeroU64::new(1234567).unwrap();
+    const TEST_VECTOR: &[u64] = &[
+        1333627000697578,
+        14261447996154253071,
+        3585844736910023377,
+        5442475313099128100,
+        933003675054162526,
+    ];
+
+    #[test]
+    fn test_vector() {
+        check_u64::<XorShift64>(TEST_VECTOR_SEED, TEST_VECTOR);
+    }
+}

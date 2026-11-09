@@ -33,3 +33,23 @@ impl SeedableGenerator for SplitMix64 {
         Self { state: seed }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::test::check_u64;
+
+    const TEST_VECTOR_SEED: u64 = 1234567;
+    const TEST_VECTOR: &[u64] = &[
+        6457827717110365317,
+        3203168211198807973,
+        9817491932198370423,
+        4593380528125082431,
+        16408922859458223821,
+    ];
+
+    #[test]
+    fn test_vector() {
+        check_u64::<SplitMix64>(TEST_VECTOR_SEED, TEST_VECTOR);
+    }
+}
