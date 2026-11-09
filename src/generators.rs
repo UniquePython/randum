@@ -17,6 +17,7 @@ pub(crate) mod bit64 {
     pub(crate) use crate::generators::xorshift64::XorShift64;
 
     pub(crate) mod xoshiro {
+        pub(crate) use crate::generators::xoshiros::Xoshiro256PlusPlus;
         pub(crate) use crate::generators::xoshiros::Xoshiro256StarStar;
     }
 }
