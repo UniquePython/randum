@@ -1,4 +1,4 @@
-use crate::generators::PcgSeed;
+use crate::generators::seeds::PcgSeed;
 use crate::traits::{Generator, SeedableGenerator};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
